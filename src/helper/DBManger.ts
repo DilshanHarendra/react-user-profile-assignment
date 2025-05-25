@@ -30,7 +30,7 @@ export async function addUser(payload: UserType): Promise<void> {
     const tx = db.transaction(STORE_NAME, 'readwrite');
     const store = tx.objectStore(STORE_NAME);
     store.put(payload);
-    // @ts-ignore
+
     await tx.complete;
     db.close();
   }
@@ -44,11 +44,9 @@ export async function updateUser(payload: UserType): Promise<UserType> {
   const data:UserType ={...payload};
 
 
-  // @ts-ignore
+
   delete data['id'];
-  // @ts-ignore
   delete data['password'];
-  // @ts-ignore
   delete data['userName'];
 
   const request = store.put({...payload,password:current?.password}); // `put()` updates if key exists

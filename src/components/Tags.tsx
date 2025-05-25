@@ -22,7 +22,7 @@ const Tags: FC<propsI> = ({value=[],onChange}) => {
         setTags([...arr])
     }
 
-    // @ts-ignore
+
     const addTag=(e)=>{
         if (e.key === 'Enter') {
             const arr=[...tags]

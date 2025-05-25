@@ -7,7 +7,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useAppSelector } from '@/store/hooks.ts';
 import SpouseInfo from '@/pages/profile/SpouseInfo.profile.tsx';
 import PersonalPreference from '@/pages/profile/PersonalPreference.profile.tsx';
-let initItems = [
+const initItems = [
   {
     title: "Basic Details",
     url: "basic",
