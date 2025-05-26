@@ -7,10 +7,14 @@ import { PersistGate } from 'redux-persist/lib/integration/react';
 import { persistor, store } from './store/store.js';
 import Loading from './components/Loading.tsx';
 
+const baseUrl = import.meta.env.VITE_BASE_URL || '/'
+
+
+
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <Provider store={store}>
     <PersistGate loading={<Loading />} persistor={persistor}>
-      <BrowserRouter>
+      <BrowserRouter basename={baseUrl}>
         <App />
       </BrowserRouter>
     </PersistGate>
