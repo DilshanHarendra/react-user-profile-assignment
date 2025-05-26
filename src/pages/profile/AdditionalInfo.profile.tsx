@@ -3,12 +3,6 @@ import { Controller, FormProvider, useForm } from 'react-hook-form';
 import { Label } from '@/components/ui/label.tsx';
 import { Input } from '@/components/ui/input.tsx';
 import { Button } from '@/components/ui/button.tsx';
-import { Calendar } from "@/components/ui/calendar"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover"
 import { useState } from 'react';
 import {
   Select,
@@ -23,8 +17,11 @@ import { updateUser } from '@/helper/DBManger.ts';
 import { toast } from 'sonner';
 import { updateUser as updateUserStore } from '@/store/reducers/users/users.reducer.ts';
 import { useDispatch } from 'react-redux';
-import { CalendarIcon } from "lucide-react"
-import { format } from "date-fns"
+import { parseISO ,subYears} from "date-fns"
+
+const minAge=17
+
+const minYear = subYears(new Date(), minAge);
 
 
 const AdditionalInfo = () => {
@@ -90,7 +87,7 @@ const AdditionalInfo = () => {
           </div>
           <div>
             <h2 className="font-semibold">Date Of Birth</h2>
-            <p>{user?.email||'No data'}</p>
+            <p>{user?.birthday||'No data'}</p>
           </div>
           <div>
             <h2 className="font-semibold">Gender</h2>
@@ -242,7 +239,7 @@ const AdditionalInfo = () => {
               <Controller
                 control={form.control}
                 name="birthday"
-                render={({ formState,field }) => {
+                render={({ formState }) => {
                   return (
                     <div data-slot="form-item" className="grid gap-2">
                       <Label data-slot="form-label"
@@ -252,30 +249,19 @@ const AdditionalInfo = () => {
                       >
                         <span className="text-red-500">*</span>Birthday
                       </Label>
-                      <Popover>
-                        <PopoverTrigger asChild>
-                            <Button
-                              className="w-full flex"
-                              variant={"outline"}
-                            >
-                              {field.value&& (
-                                format(field.value, "PPP")
-                              )}
-                                <CalendarIcon className=" h-4 w-4 opacity-50 block" />
-                            </Button>
-                        </PopoverTrigger>
-                        <PopoverContent className="w-auto p-0" align="start">
-                          <Calendar
-                            mode="single"
-                            selected={field.value}
-                            onSelect={field.onChange}
-                            disabled={(date) =>
-                              date > new Date() || date < new Date("1900-01-01")
-                            }
-                            initialFocus
-                          />
-                        </PopoverContent>
-                      </Popover>
+                      <Input  id="birthday"
+                              type="date"
+                              min={minYear.toString()}
+                              className="w-full"
+                              {...form.register("birthday", {
+                                required: "Birthday is required",
+                                validate: value => {
+                                  const selectedDate = parseISO(value);
+
+                                  return new Date().getFullYear() - selectedDate.getFullYear() > minAge  ||  `You must be at least ${minAge} years old`;
+                                },
+                              })}
+                      />
                       {formState.errors.birthday && <p className="text-red-500 text-sm font-semibold">{formState.errors.birthday.message}</p>}
                     </div>
                   )
