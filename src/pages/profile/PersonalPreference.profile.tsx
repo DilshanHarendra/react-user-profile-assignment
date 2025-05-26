@@ -27,7 +27,7 @@ const PersonalPreference = () => {
       ...user
     },
   })
-  const handleKeyDown = (event:any) => {
+  const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
       event.preventDefault(); // Prevent the default form submission
     }
