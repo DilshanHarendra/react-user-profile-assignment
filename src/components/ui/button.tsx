@@ -64,7 +64,7 @@ function Button({
         {
           loading&& <span><Loading/></span>
         }
-        <span>{children}</span>
+        {children}
       </Comp>
     </>
   )
