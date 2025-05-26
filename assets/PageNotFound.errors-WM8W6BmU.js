@@ -1,1 +1,0 @@
-import{j as e}from"./index-ClNzPzUI.js";const s=()=>e.jsxDEV("div",{className:"w-full h-screen grid place-items-center text-xl font-bold",children:"404"},void 0,!1,{fileName:"/home/runner/work/react-user-profile-assignment/react-user-profile-assignment/src/pages/errors/PageNotFound.errors.tsx",lineNumber:3,columnNumber:11},void 0);export{s as default};
