@@ -46,4 +46,4 @@ jobs:
           branch: deploy
           folder: dist
           clean: true
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.G_TOKEN }}
