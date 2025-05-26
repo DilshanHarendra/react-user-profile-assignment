@@ -11,7 +11,7 @@ on:
 
 env:
   VITE_BASE_URL: ${{ secrets.VITE_BASE_URL }}
-  VITE_APP_NAME: : ${{ secrets.VITE_APP_NAME }}
+  VITE_APP_NAME: ${{ secrets.VITE_APP_NAME }}
   CI: false
 
 jobs:
