@@ -26,24 +26,19 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-      - name: Checkout repository
       - uses: actions/checkout@v2
-
-      - name: Setup Node.js
+      - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
-            node-version: ${{ matrix.node-version }}
-            cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build project
-        run: npm run build
-
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - name: clean cache
+        run: npm cache clean --force
+      - run: npm i
+      - run: npm run build
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
-          branch: deploy
-          folder: dist
+          branch: deploy # The branch the action should deploy to.
+          folder: ./dist
           token: ${{ secrets.G_TOKEN }}
