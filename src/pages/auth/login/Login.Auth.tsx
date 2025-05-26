@@ -9,7 +9,6 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setLogin } from '@/store/reducers/users/users.reducer.ts';
 import { toast } from "sonner"
-import { initLoginData } from '@/assets/data.ts';
 import { setCookie } from '@/helper/CookieManger.ts';
 import { getUserById } from '@/helper/DBManger.ts';
 import { UserType } from '@/store/reducers/users/types.ts';
@@ -30,7 +29,7 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<LoginI>({
-    defaultValues: initLoginData,
+    defaultValues: {},
   })
 
 
@@ -63,11 +62,7 @@ const Login = () => {
 
 
 
-  return   <div>
-    <div className="mx-auto  w-full sm:w-[480px] sm:p-8">
-        <h1 className="text-3xl font-medium text-center">Welcome to <span className="font-bold">myApp</span></h1>
-        <span className="border border-2 border-gray-500 w-2/4 mx-auto mt-2 block"></span>
-
+  return   <>
      <div className="bg-white shadow rounded-md p-5 mt-8">
        <form
          className="grid gap-y-6"
@@ -156,7 +151,6 @@ const Login = () => {
 
      </div>
 
-    </div>
-  </div>
+  </>
 }
 export default Login

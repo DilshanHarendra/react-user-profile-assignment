@@ -21,7 +21,11 @@ const AuthLayout = () => {
             </div>
             <div
                 className="container mx-auto mt-3">
+              <div className="mx-auto  w-full sm:w-[480px] sm:p-8">
+                <h1 className="text-2xl font-medium text-center">Welcome to <span className="font-bold">{import.meta.env.VITE_APP_NAME}</span></h1>
+                <span className="border-2 border-gray-500 w-2/4 mx-auto mt-2 block"></span>
                 <Outlet />
+              </div>
             </div>
         </div>
     );
