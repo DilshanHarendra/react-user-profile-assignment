@@ -60,19 +60,19 @@ const PersonalPreference = () => {
         <div className="flex flex-col space-y-4">
           <div>
             <h2 className="font-semibold">Hobbies & Interests</h2>
-            <p>{user?.hobbies?.join('')||'No data'}</p>
+            <p>{user?.hobbies?.join(', ')||'No data'}</p>
           </div>
           <div>
             <h2 className="font-semibold">Favorite Sports</h2>
-            <p>{user?.sports?.join('')||'No data'}</p>
+            <p>{user?.sports?.join(', ')||'No data'}</p>
           </div>
           <div>
             <h2 className="font-semibold">Preferred music genres</h2>
-            <p>{user?.genres?.join('')||'No data'}</p>
+            <p>{user?.genres?.join(', ')||'No data'}</p>
           </div>
           <div>
             <h2 className="font-semibold">Preferred Movies/Tv Shows</h2>
-            <p>{user?.movies?.join('')||'No data'}</p>
+            <p>{user?.movies?.join(', ')||'No data'}</p>
           </div>
         </div>
         :
