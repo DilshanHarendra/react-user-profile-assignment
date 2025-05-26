@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/sidebar.tsx';
 import { useDispatch } from 'react-redux';
 import { clearUser } from '@/store/reducers/users/users.reducer.ts';
-import { FC, useEffect } from 'react';
+import { FC, RefObject, useImperativeHandle } from 'react';
 import { Link } from 'react-router-dom';
 
 
@@ -39,10 +39,10 @@ const items = [
   },
 ]
 interface PropsI{
-  isMenuOpen:boolean;
+  ref:  RefObject<any>;
 }
 
-const  SidebarNavigation:FC<PropsI> =({isMenuOpen})=> {
+const  SidebarNavigation:FC<PropsI> =({ref})=> {
 
   const dispatch = useDispatch()
   items[3].click = ()=>{
@@ -53,9 +53,13 @@ const  SidebarNavigation:FC<PropsI> =({isMenuOpen})=> {
     setOpenMobile,
   } = useSidebar()
 
-  useEffect(() => {
-   setOpenMobile(true)
-  }, [isMenuOpen]);
+ const openDrawer=()=>{
+    setOpenMobile(true)
+ }
+
+  useImperativeHandle(ref,()=>({
+    openDrawer
+  }))
 
   return (
     <Sidebar side="right">
