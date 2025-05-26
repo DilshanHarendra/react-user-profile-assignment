@@ -25,8 +25,8 @@ const DefaultLayout = () => {
 
     return (
         <>
-        <SidebarProvider >
-            <SidebarNavigation isMenuOpen={isMenuOpen}  />
+        <SidebarProvider setIsMobile={true} >
+            <SidebarNavigation isMenuOpen={isMenuOpen}   />
             <div className="w-full p-5">
                     <div className="flex  justify-between container mx-auto">
                         <div className="border px-8 py-2">

@@ -50,13 +50,11 @@ const  SidebarNavigation:FC<PropsI> =({isMenuOpen})=> {
   }
 
   const {
-    setOpen,
     setOpenMobile,
   } = useSidebar()
 
   useEffect(() => {
-    setOpen(isMenuOpen)
-    setOpenMobile(isMenuOpen)
+   setOpenMobile(true)
   }, [isMenuOpen]);
 
   return (
