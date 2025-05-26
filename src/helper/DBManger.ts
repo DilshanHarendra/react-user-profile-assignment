@@ -31,7 +31,7 @@ export async function addUser(payload: UserType): Promise<void> {
     const store = tx.objectStore(STORE_NAME);
     store.put(payload);
 
-    await tx.complete;
+    await tx.oncomplete;
     db.close();
   }
 }
