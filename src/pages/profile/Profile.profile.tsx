@@ -70,13 +70,13 @@ const Profile = () => {
             <h2 className="text-2xl font-bold text-nowrap">{isProfile?'My Profile':'Edit Profile'}</h2>
             <span className="border-b-2 border-gray-500 block w-full"></span>
           </div>
-          <Link to={isProfile?'/profile-edit':'/profile'} className="flex items-center space-x-2 cursor-pointer mt-3 hover:text-blue-500">
+          <Link to={isProfile?`/profile-edit?tab=${tab}`:`/profile?tab=${tab}`} className="flex items-center space-x-2 cursor-pointer mt-3 hover:text-blue-500">
             {
               !isProfile&&<ChevronLeft className="w-5 h-5"/>
             }
             <span className="underline  text-nowrap">{isProfile?'Edit Profile':'Go Back to My Profile'}</span>
             {
-              isProfile&&<Pencil className="w-5 h-5"/>
+              isProfile&&<Pencil className="w-4 h-4"/>
             }
           </Link>
         </div>
