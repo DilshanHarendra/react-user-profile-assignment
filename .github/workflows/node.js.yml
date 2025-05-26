@@ -36,9 +36,15 @@ jobs:
         run: npm cache clean --force
       - run: npm i
       - run: npm run build
+
+      - name: Move dist to root folder
+        run: |
+          mkdir root
+          cp -r dist/* root/
+
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
           branch: deploy # The branch the action should deploy to.
-          folder: dist
+          folder: root
           token: ${{ secrets.GITHUB_TOKEN }}
