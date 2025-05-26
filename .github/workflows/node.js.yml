@@ -25,7 +25,10 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
+      - name: Checkout repo
       - uses: actions/checkout@v4
+
+      - name: Setup Node
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
@@ -37,8 +40,8 @@ jobs:
 
       - run: npm i
       - run: npm run build
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: deploy # The branch the action should deploy to.
-          folder: dist
-          clean: true
+#        uses: JamesIves/github-pages-deploy-action@v4
+#        with:
+#          branch: deploy # The branch the action should deploy to.
+#          folder: dist
+#          clean: true
