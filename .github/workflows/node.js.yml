@@ -42,4 +42,4 @@ jobs:
         with:
           branch: deploy # The branch the action should deploy to.
           folder: dist
-          token: ${{ secrets.G_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
